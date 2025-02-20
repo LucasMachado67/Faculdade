@@ -1,0 +1,187 @@
+﻿Exercício 1
+
+
+Implemente um algoritmo em pseudocódigo que solicite dois números ao usuário e realize as quatro
+operações básicas (adição, subtração, multiplicação e divisão). Certifique-se de tratar o caso de divisão por
+zero
+
+
+variáveis: numero1, numero2, resultado
+ler (numero1, numero2)
+
+
+função somar()
+        
+        resultado = numero1 + numero2
+        escrever("resultado: ", resultado)
+fim função
+
+
+função subtrair()
+        ler(resultado)
+        resultado = numero1 - numero2
+        escrever("resultado: ", resultado)
+fim função
+
+
+função multiplicar()
+        ler(resultado)
+        resultado = numero1 * numero2
+        escrever("resultado: ", resultado)
+fim função
+
+
+função divisão()
+        ler(resultado)
+        se numero1 / numero2 == 0 então
+                escrever("Não é possível dividir por zero")
+        senão
+                resultado = numero1 / numero2
+                escrever("resultado: ", resultado)
+fim função
+
+
+Exercício 2 
+
+
+Escreva um algoritmo em pseudocódigo que peça ao usuário o valor do raio de um círculo e implemente
+uma função para calcular e exibir a área desse círculo. Utilize 3,14 como valor de Pi
+
+
+variáveis = raio, pi, resultado
+
+
+ler (raio)
+pi = 3.14;
+
+
+resultado = raio * raio * pi;
+F
+escrever("resultado: ", resultado);
+
+
+Exercício 3 
+
+
+Desenvolva um algoritmo em pseudocódigo que peça ao usuário as medidas de comprimento e largura de
+um retângulo. Implemente funções para calcular e exibir a área e o perímetro do retângulo.
+
+
+variáveis comprimento, largura, resultado
+
+
+ler(comprimento, largura)
+
+
+funcao área
+        resultado = comprimento * largura 
+        escrever("resultado: ", resultado)
+fim funcao
+
+
+funcao perímetro
+        resultado = 2 * (comprimento + largura)
+        escrever("resultado: ", resultado)
+fim perímetro
+
+
+
+
+Exercício 4 
+
+
+Implemente um algoritmo em pseudocódigo que represente uma Conta Bancária e que possua os atributos
+número da conta e saldo. Crie funções para depositar e sacar dinheiro da conta, garantindo que não seja
+possível sacar um valor maior que o saldo disponível.
+
+
+inicio contaBancaria
+
+
+variaveis: numeroConta, saldo, valor;
+ler (numeroConta, saldo);
+funcao Depositar()
+        ler(valor);
+        saldo = saldo + valor;
+fim funcao
+
+
+funcao sacar()
+        ler (valor);
+        se saldo >= valor então
+                saldo = saldo - valor;
+        senão 
+                escrever(‘Saldo insuficiente’);
+        fim se;
+fim funcao
+        
+
+
+fim contaBancaria
+
+
+
+
+Exercício 5
+
+
+Crie um algoritmo em pseudocódigo para representar um item de uma loja (Produto). O Produto deve
+possuir os atributos nome, preço e quantidade em estoque. Implemente funções para adicionar e remover
+produtos do estoque e uma função para calcular o valor total do estoque.
+
+
+
+
+Notebook acer
+        nome = nitro v
+        preco = 1000.0
+        quantidadeEstoque = 10
+
+
+funcao adicionar()
+        quantidadeEstoque = quantidadeEstoque  +1
+fim funcao
+
+
+funcao remover()
+        quantidadeEstoque = quantidadeEstoque  - 1
+fim funcao
+
+
+funcao calcular()
+        ler(resultado)
+        resultado = preco * quantidade
+        escrever("resultado: ", resultado)
+fim funcao
+
+
+
+
+Exercício 6 
+Desenvolva um algoritmo em pseudocódigo que represente um Veículo e possua os atributos modelo,
+capacidade do tanque e quilometragem rodada na última viagem. Implemente um método que calcule e
+exiba a média de consumo do veículo, considerando que o motorista encheu o tanque antes da viagem.
+
+
+
+
+
+
+
+
+
+
+Veiculo bmw
+        modelo = x6
+        capacidadeTanque = 24
+        quilometragem = 500
+
+
+
+
+variáveis resultado;
+funcao mediaConsumo()
+        ler(capacidadeTanque, quilometragem)
+        resultado = quilometragem / capacidadeTanque
+        escrever("resultado: ", resultado)
+fim funcao
