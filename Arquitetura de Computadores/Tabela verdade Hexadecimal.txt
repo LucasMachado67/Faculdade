@@ -1,0 +1,13 @@
+a = !a!b!c!d + !a!bc!d + !a!bcd + !ab!cd + !abc!d + !abcd + a!b!c!d + a!b!cd + a!bc!d + ab!c!d + abc!d + abcd
+
+b = !a!b!c!d + !a!b!cd + !a!bc!d + !a!bcd + !ab!c!d + !abcd + a!b!c!d + a!b!cd + a!bc!d + ab!cd
+ 
+c = !a!b!c!d + !a!b!cd + !a!bcd + !ab!c!d + !ab!cd + !abc!d + !abcd + a!b!c!d + a!b!cd + a!bc!d + a!bcd + ab!cd
+
+d = !a!b!c!d + !a!bc!d + !a!bcd + !ab!cd + !abc!d + a!b!c!d + a!bcd + ab!c!d + ab!cd + abc!d
+
+e = !a!b!c!d + !a!bc!d + !abc!d + a!b!c!d + a!bc!d + a!bcd + ab!c!d + ab!cd + abc!d + abcd
+
+f = !a!b!c!d + !ab!c!d + !ab!cd + !abc!d + a!b!c!d + a!b!cd + a!bc!d + a!bcd + ab!c!d + abc!d + abcd
+
+g = !a!bc!d + !a!bcd + !ab!c!d + !ab!cd + !abc!d + a!b!c!d + a!b!cd + a!bc!d + a!bcd + ab!cd + abc!d + abcd 
