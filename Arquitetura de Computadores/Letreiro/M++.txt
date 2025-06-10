@@ -1,0 +1,7 @@
+Unidade de Controle - é onde executa as funções do hardware
+Unidade de lógica Aritmética - É onde são efetuados os cálculos do sistema
+Registradores - São as variáveis de hardware, elementos que armazenam dados
+Acumulador - É um registrador, porém é de uso geral, por exemplo, é usado quando você quer fazer um calculo, será sempre usado durante a aplicação
+Memória do Programa - é onde armazena o programa
+Memória de dados - É onde guarda os dados quando os registradores estão ocupados
+Memória de Pilha - Guarda dados temporariamente

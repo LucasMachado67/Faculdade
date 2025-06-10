@@ -1,0 +1,8 @@
+MOV 00,A; 	//mov - operador E 00,a É O operando
+SALTO:
+	MOV A,B;  //CLONA A
+	MOV A,C; //CLONA A
+	MOV A,D; //CLONA A
+	MOV A,E; //CLONA A
+	ADD 01,A;  //SOMA 1 EM A E COLOCA RESULTADO EM A
+	JMP SALTO;
