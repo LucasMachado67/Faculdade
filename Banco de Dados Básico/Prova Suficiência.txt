@@ -1,0 +1,64 @@
+-- QUESTÃO 1 --
+
+CREATE TABLE genero (
+  id_genero INT PRIMARY KEY,
+  genero VARCHAR(30)
+);
+
+
+CREATE TABLE ator (
+  id_ator INT PRIMARY KEY,
+  ator VARCHAR(50)
+);
+
+CREATE TABLE Filme_Ator(
+  cd_filme INTEGER,
+  cd_ator INTEGER,
+  FOREIGN KEY (cd_filme) REFERENCES filme(id_filme)
+  FOREIGN KEY (cd_ator) REFERENCES ator(id_ator)
+);
+
+CREATE TABLE censura (
+  id_censura INT PRIMARY KEY,
+  censura VARCHAR(50)
+);
+
+
+CREATE TABLE filme(
+  id_filme INTEGER PRIMARY KEY,
+  id_censura INTEGER,
+  id_genero INTEGER,
+  nm_filme VARCHAR(50),
+  sinopse VARCHAR(255),
+  duracao VARCHAR(20),
+  dt_lancamento DATE,
+  fl_dublado CHAR(1),
+  FOREIGN KEY (id_censura) REFERENCES censura(id_censura),
+  FOREIGN KEY (id_genero) REFERENCES genero(id_genero)
+);
+
+-- Questão 2 --
+SELECT nm_filme, dt_lancamento, fl_dublado, c.censura, g.genero FROM filme
+JOIN censura c ON filme.id_censura = c.id_censura
+JOIN genero g ON filme.id_genero = g.id_genero
+WHERE c.censura = "Livre" AND g.genero = "Infantil" AND fl_dublado = "S"
+ORDER BY dt_lancamento DESC;
+
+-- Questão 3 --
+SELECT COUNT(id_filme) AS TOTAL_DE_FILMES, g.genero FROM filme
+JOIN genero g ON filme.id_genero = g.id_genero
+GROUP BY g.genero
+ORDER BY TOTAL_DE_FILMES DESC;
+
+-- Questão 4 --
+SELECT f.nm_filme, COUNT(*) AS total_ator
+FROM filme_ator fa
+JOIN filme f ON fa.cd_filme = f.id_filme
+GROUP BY f.id_filme, f.nm_filme
+HAVING COUNT(*) > 1
+ORDER BY f.nm_filme;
+
+-- Questão 5 --
+SELECT a.id_ator, a.ator FROM ator a
+LEFT JOIN filme_ator fa ON a.id_ator = fa.cd_ator
+WHERE fa.cd_ator IS NULL
