@@ -1,0 +1,117 @@
+-- QUESTÃO 1 --
+
+CREATE TABLE genero (
+  id_genero INT PRIMARY KEY,
+  genero VARCHAR(30)
+);
+
+
+CREATE TABLE ator (
+  id_ator INT PRIMARY KEY,
+  ator VARCHAR(50)
+);
+
+CREATE TABLE Filme_Ator(
+  cd_filme INTEGER,
+  cd_ator INTEGER,
+  FOREIGN KEY (cd_filme) REFERENCES filme(id_filme)
+  FOREIGN KEY (cd_ator) REFERENCES ator(id_ator)
+);
+
+CREATE TABLE censura (
+  id_censura INT PRIMARY KEY,
+  censura VARCHAR(50)
+);
+
+
+CREATE TABLE filme(
+  id_filme INTEGER PRIMARY KEY,
+  id_censura INTEGER,
+  id_genero INTEGER,
+  nm_filme VARCHAR(50),
+  sinopse VARCHAR(255),
+  duracao VARCHAR(20),
+  dt_lancamento DATE,
+  fl_dublado CHAR(1),
+  FOREIGN KEY (id_censura) REFERENCES censura(id_censura),
+  FOREIGN KEY (id_genero) REFERENCES genero(id_genero)
+);
+
+-- INSERTs das tabelas --
+
+INSERT INTO censura (id_censura, censura) VALUES
+(1, 'Livre'),
+(2, '10'),
+(3, '12'),
+(4, '14'),
+(5, '16'),
+(6, '18');
+INSERT INTO genero (id_genero, genero) VALUES
+(1, 'Ação'),
+(2, 'Comédia'),
+(3, 'Drama'),
+(4, 'Terror'),
+(5, 'Ficção Científica'),
+(6, 'Infantil');
+INSERT INTO ator (id_ator, ator) VALUES
+(1, 'João Silva'),
+(2, 'Maria Souza'),
+(3, 'Carlos Oliveira'),
+(4, 'Ana Lima'),
+(5, 'Pedro Santos'),
+(6, 'Juliana Castro'),
+(7, 'Ricardo Braga'),
+(8, 'Fernanda Mendes'),
+(9, 'Lucas Duarte'),   
+(10, 'Camila Freitas');  
+
+INSERT INTO filme (id_filme, id_censura, id_genero, nm_filme, sinopse, duracao, dt_lancamento, fl_dublado) VALUES
+(1, 1, 6, 'Aventuras no Zoo', 'Crianças vivem aventuras com animais.', '90', '2020-06-01', 'S'),
+(2, 2, 2, 'Risos e Mais Risos', 'Comédia sobre amigos atrapalhados.', '100', '2019-05-10', 'S'),
+(3, 3, 1, 'Missão Explosiva', 'Ação e adrenalina em alta voltagem.', '110', '2021-09-12', 'N'),
+(4, 4, 3, 'Lágrimas do Passado', 'Drama familiar comovente.', '105', '2022-01-20', 'S'),
+(5, 1, 6, 'O Reino Encantado', 'História infantil com magia.', '85', '2018-11-15', 'S'),
+(6, 5, 4, 'Noite Sombria', 'Terror psicológico assustador.', '95', '2023-03-18', 'N'),
+(7, 6, 5, 'Viagem Intergaláctica', 'Uma jornada pelo espaço.', '120', '2020-12-25', 'S'),
+(8, 4, 2, 'Férias em Família', 'Confusões em uma viagem de férias.', '98', '2017-07-05', 'S'),
+(9, 3, 1, 'Operação Relâmpago', 'Policiais em uma missão arriscada.', '105', '2016-08-13', 'N'),
+(10, 2, 3, 'Caminhos Cruzados', 'Vidas se entrelaçam em uma metrópole.', '102', '2015-04-22', 'S');
+
+INSERT INTO Filme_Ator (cd_filme, cd_ator) VALUES
+
+(1, 1), (1, 2),
+(2, 3), (2, 4),
+(3, 5), (3, 6),
+(4, 1),
+(5, 2), (5, 3), (5, 7),
+(6, 4),
+(7, 5), (7, 6),
+(8, 1), (8, 2), (8, 4),
+(9, 7),
+(10, 8);
+
+-- Questão 2 --
+SELECT nm_filme, dt_lancamento, fl_dublado, c.censura, g.genero FROM filme
+JOIN censura c ON filme.id_censura = c.id_censura
+JOIN genero g ON filme.id_genero = g.id_genero
+WHERE c.censura = "Livre" AND g.genero = "Infantil" AND fl_dublado = "S"
+ORDER BY dt_lancamento DESC;
+
+-- Questão 3 --
+SELECT COUNT(id_filme) AS TOTAL_DE_FILMES, g.genero FROM filme
+JOIN genero g ON filme.id_genero = g.id_genero
+GROUP BY g.genero
+ORDER BY TOTAL_DE_FILMES DESC;
+
+-- Questão 4 --
+SELECT f.nm_filme, COUNT(*) AS total_ator
+FROM filme_ator fa
+JOIN filme f ON fa.cd_filme = f.id_filme
+GROUP BY f.id_filme, f.nm_filme
+HAVING COUNT(*) > 1
+ORDER BY f.nm_filme;
+
+-- Questão 5 --
+SELECT a.id_ator, a.ator FROM ator a
+LEFT JOIN filme_ator fa ON a.id_ator = fa.cd_ator
+WHERE fa.cd_ator IS NULL
