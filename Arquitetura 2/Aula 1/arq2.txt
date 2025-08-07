@@ -1,7 +1,0 @@
-A arquitetura de x86 é divida em dois blocos
-
-BIU - Pega as Instruções e envia para a EU
- 
-EU - Executa as instruções
-
-
